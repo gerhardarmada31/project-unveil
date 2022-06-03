@@ -1,4 +1,4 @@
-Shader "Custom/StencilOject"
+Shader "Custom/NewSurfaceShader"
 {
     Properties
     {
@@ -12,11 +12,6 @@ Shader "Custom/StencilOject"
         Tags { "RenderType"="Opaque" }
         LOD 200
 
-        //Makes them hide the object
-        Stencil{
-            Ref 1
-            Comp equal
-        }
         CGPROGRAM
         // Physically based Standard lighting model, and enable shadows on all light types
         #pragma surface surf Standard fullforwardshadows

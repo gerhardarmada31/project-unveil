@@ -50,7 +50,7 @@ public class PlayerInput : MonoBehaviour
     void Update()
     {
         playerMovement.Move(moveInput);
-        playerMovement.Looking(lookInput);
+      //  playerMovement.Looking(lookInput);
 
 
 

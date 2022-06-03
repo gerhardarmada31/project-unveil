@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
     //Movementspeed
     [SerializeField] private float movementSpeed = 5f;
     [SerializeField] private float castOffSet = 2f;
-    // [SerializeField] private float playerTurnSpeed = 0.3f;
+    [SerializeField] private float playerTurnSpeed = 0.3f;
     [SerializeField] private float playerGravityScale = -80f;
     [SerializeField] private float jumpPower = 5f;
     [SerializeField] private float playerFriction = 0.5f;
@@ -51,11 +51,11 @@ public class PlayerMovement : MonoBehaviour
         moveInputs = Vector3.ClampMagnitude(moveInputs, 1);
 
         // |IF NEEDED| Rotation of player
-        // if (charVelocity.magnitude > 0.01f && moveInputs != Vector3.zero)
-        // {
-        //     Quaternion targetRotation = Quaternion.LookRotation(moveInputs);
-        //     transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, playerTurnSpeed);
-        // }
+        if (charVelocity.magnitude > 0.01f && moveInputs != Vector3.zero)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(moveInputs);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, playerTurnSpeed);
+        }
 
         //Gravity and Falling Velocity
         Vector3 movement = moveInputs * movementSpeed;
@@ -94,20 +94,20 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void Looking(Vector2 mouseInput)
-    {
-        Ray lookRay = Camera.main.ScreenPointToRay(mouseInput);
-        Plane plane = new Plane(Vector3.up, Vector3.zero);
-        float distance;
-        if (plane.Raycast(lookRay, out distance))
-        {
-            Vector3 target = lookRay.GetPoint(distance);
-            Vector3 direction = target - transform.position;
-            float rotation = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Euler(0, rotation, 0);
-        }
+    // public void Looking(Vector2 mouseInput)
+    // {
+    //     Ray lookRay = Camera.main.ScreenPointToRay(mouseInput);
+    //     Plane plane = new Plane(Vector3.up, Vector3.zero);
+    //     float distance;
+    //     if (plane.Raycast(lookRay, out distance))
+    //     {
+    //         Vector3 target = lookRay.GetPoint(distance);
+    //         Vector3 direction = target - transform.position;
+    //         float rotation = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+    //         transform.rotation = Quaternion.Euler(0, rotation, 0);
+    //     }
 
-    }
+    // }
 
 
 }
