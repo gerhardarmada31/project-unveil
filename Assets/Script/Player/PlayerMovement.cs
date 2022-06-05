@@ -51,11 +51,11 @@ public class PlayerMovement : MonoBehaviour
         moveInputs = Vector3.ClampMagnitude(moveInputs, 1);
 
         // |IF NEEDED| Rotation of player
-        if (charVelocity.magnitude > 0.01f && moveInputs != Vector3.zero)
-        {
-            Quaternion targetRotation = Quaternion.LookRotation(moveInputs);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, playerTurnSpeed);
-        }
+        // if (charVelocity.magnitude > 0.01f && moveInputs != Vector3.zero)
+        // {
+        //     Quaternion targetRotation = Quaternion.LookRotation(moveInputs);
+        //     transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, playerTurnSpeed);
+        // }
 
         //Gravity and Falling Velocity
         Vector3 movement = moveInputs * movementSpeed;
