@@ -20,6 +20,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpPower = 5f;
     [SerializeField] private float playerFriction = 0.5f;
 
+    public float Movementspeed
+    {
+        get { return movementSpeed; }
+        set { movementSpeed = value; }
+    }
+
+
     //Camera settings
     [SerializeField] private Transform playerMainCam;
 

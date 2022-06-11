@@ -12,8 +12,16 @@ public class PlayerStatus : MonoBehaviour, ICollectable
         set { currentSpiritAmount = value; }
     }
 
+    private bool currentBigRevealStatus;
+    public bool CurrentBigRevealStatus
+    {
+        get { return currentBigRevealStatus; }
+        set { currentBigRevealStatus = value; }
+    }
+
     [SerializeField] GameObject revealSphere;
     private Vector3 revealSphereSize = new Vector3(3f, 3f, 3f);
+    private GameObject bigRevealPlane;
     //Vector Reveal add;
 
 
@@ -21,6 +29,7 @@ public class PlayerStatus : MonoBehaviour, ICollectable
     private void Awake()
     {
         revealSphere = this.gameObject.transform.GetChild(1).gameObject;
+        bigRevealPlane = this.gameObject.transform.GetChild(3).gameObject;
         //get the revealSphere scale
     }
 
@@ -49,6 +58,12 @@ public class PlayerStatus : MonoBehaviour, ICollectable
             yield return new WaitForEndOfFrame();
         }
         // objectToScale.transform.position = scaleTo;
+    }
+
+    public void ActivateBigReveal()
+    {
+        Debug.Log("ACTIVATE BIG REVEAL");
+        bigRevealPlane.SetActive(true);
     }
 
 

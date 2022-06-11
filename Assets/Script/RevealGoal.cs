@@ -6,14 +6,10 @@ public class RevealGoal : MonoBehaviour
 {
     [SerializeField] private int requiredAmount;
     private GameObject revealSphere;
-    [SerializeField] private float xScaleReveal = 20f;
-    [SerializeField] private float zScaleReveal =20f;
 
-    private void Awake()
-    {
-        revealSphere = this.gameObject.transform.GetChild(0).gameObject;
-        revealSphere.SetActive(false);
-    }
+    [SerializeField] private float xScaleReveal = 20f;
+    [SerializeField] private float zScaleReveal = 20f;
+
 
     private void OnTriggerEnter(Collider other)
     {
@@ -22,9 +18,11 @@ public class RevealGoal : MonoBehaviour
             var currentAmount = other.GetComponent<PlayerStatus>().CurrentSpiritAmount;
             if (currentAmount >= requiredAmount)
             {
-                revealSphere.SetActive(true);
-                StartCoroutine(ScaleOverSeconds(revealSphere, new Vector3(xScaleReveal, 10f, zScaleReveal), 5f));
-                Debug.Log("BIGREVEAL");
+                // revealSphere.SetActive(true);
+                // bigReveal.ScaleOverCall();
+                other.GetComponent<PlayerStatus>().ActivateBigReveal();
+                // other.GetComponent<PlayerStatus>().CurrentBigRevealStatus = true;
+                // Debug.Log("BIGREVEAL");
             }
             else
             {
@@ -33,17 +31,4 @@ public class RevealGoal : MonoBehaviour
         }
     }
 
-
-
-    public IEnumerator ScaleOverSeconds(GameObject objectToScale, Vector3 scaleTo, float seconds)
-    {
-        float elapsedTime = 0;
-        Vector3 startingScale = objectToScale.transform.localScale;
-        while (elapsedTime < seconds)
-        {
-            objectToScale.transform.localScale = Vector3.Lerp(startingScale, scaleTo, (elapsedTime / seconds));
-            elapsedTime += Time.deltaTime;
-            yield return new WaitForEndOfFrame();
-        }
-    }
 }

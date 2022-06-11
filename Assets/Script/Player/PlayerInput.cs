@@ -16,6 +16,7 @@ public class PlayerInput : MonoBehaviour
     private PlayerMovement playerMovement;
     private ShootSpawner playerShoot;
     private bool jumpInput;
+    private bool isDebugSpeedPress = false;
 
     private void Awake()
     {
@@ -32,7 +33,22 @@ public class PlayerInput : MonoBehaviour
         controls.PlayerCharacter.Jump.performed += HandleJump => jumpInput = true;
         controls.PlayerCharacter.Jump.canceled += HandleJump => jumpInput = false;
         controls.PlayerCharacter.Shoot.performed += HandleShoot;
+        controls.PlayerCharacter.DebugSpeed.performed += HandleDebugSpeed;
         controls.Enable();
+    }
+
+    private void HandleDebugSpeed(InputAction.CallbackContext context)
+    {
+        // bool isPress = false;
+        isDebugSpeedPress = !isDebugSpeedPress;
+        if (isDebugSpeedPress == true)
+        {
+            playerMovement.Movementspeed = 20f;
+        }
+        else
+        {
+            playerMovement.Movementspeed = 5f;
+        }
     }
 
     private void HandleShoot(InputAction.CallbackContext context)
@@ -50,14 +66,14 @@ public class PlayerInput : MonoBehaviour
     void Update()
     {
         playerMovement.Move(moveInput);
-      //  playerMovement.Looking(lookInput);
+        //  playerMovement.Looking(lookInput);
 
 
 
         playerMovement.Jump(jumpInput);
         Debug.Log("jump is being called");
         Debug.Log("THIS jump value  " + jumpInput);
-    
+
         //Shader position
         Shader.SetGlobalVector("_PlayerPos", transform.position);
     }

@@ -1,4 +1,4 @@
-// GENERATED AUTOMATICALLY FROM 'Assets/Script/Player Controller.inputactions'
+// GENERATED AUTOMATICALLY FROM 'Assets/Script/Player/Player Controller.inputactions'
 
 using System;
 using System.Collections;
@@ -46,6 +46,14 @@ public class @PlayerController : IInputActionCollection, IDisposable
                     ""name"": ""Jump"",
                     ""type"": ""Button"",
                     ""id"": ""6c3271ef-f2c2-46e3-8671-e970b2c59484"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""DebugSpeed"",
+                    ""type"": ""Button"",
+                    ""id"": ""c7edf005-a287-44e3-87ce-050de4d7c6ce"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -139,6 +147,17 @@ public class @PlayerController : IInputActionCollection, IDisposable
                     ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e00c7a49-911f-450b-83c0-0fee838254a6"",
+                    ""path"": ""<Keyboard>/8"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DebugSpeed"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -151,6 +170,7 @@ public class @PlayerController : IInputActionCollection, IDisposable
         m_PlayerCharacter_Shoot = m_PlayerCharacter.FindAction("Shoot", throwIfNotFound: true);
         m_PlayerCharacter_Look = m_PlayerCharacter.FindAction("Look", throwIfNotFound: true);
         m_PlayerCharacter_Jump = m_PlayerCharacter.FindAction("Jump", throwIfNotFound: true);
+        m_PlayerCharacter_DebugSpeed = m_PlayerCharacter.FindAction("DebugSpeed", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -204,6 +224,7 @@ public class @PlayerController : IInputActionCollection, IDisposable
     private readonly InputAction m_PlayerCharacter_Shoot;
     private readonly InputAction m_PlayerCharacter_Look;
     private readonly InputAction m_PlayerCharacter_Jump;
+    private readonly InputAction m_PlayerCharacter_DebugSpeed;
     public struct PlayerCharacterActions
     {
         private @PlayerController m_Wrapper;
@@ -212,6 +233,7 @@ public class @PlayerController : IInputActionCollection, IDisposable
         public InputAction @Shoot => m_Wrapper.m_PlayerCharacter_Shoot;
         public InputAction @Look => m_Wrapper.m_PlayerCharacter_Look;
         public InputAction @Jump => m_Wrapper.m_PlayerCharacter_Jump;
+        public InputAction @DebugSpeed => m_Wrapper.m_PlayerCharacter_DebugSpeed;
         public InputActionMap Get() { return m_Wrapper.m_PlayerCharacter; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -233,6 +255,9 @@ public class @PlayerController : IInputActionCollection, IDisposable
                 @Jump.started -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnJump;
                 @Jump.performed -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnJump;
                 @Jump.canceled -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnJump;
+                @DebugSpeed.started -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnDebugSpeed;
+                @DebugSpeed.performed -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnDebugSpeed;
+                @DebugSpeed.canceled -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnDebugSpeed;
             }
             m_Wrapper.m_PlayerCharacterActionsCallbackInterface = instance;
             if (instance != null)
@@ -249,6 +274,9 @@ public class @PlayerController : IInputActionCollection, IDisposable
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
+                @DebugSpeed.started += instance.OnDebugSpeed;
+                @DebugSpeed.performed += instance.OnDebugSpeed;
+                @DebugSpeed.canceled += instance.OnDebugSpeed;
             }
         }
     }
@@ -259,5 +287,6 @@ public class @PlayerController : IInputActionCollection, IDisposable
         void OnShoot(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
+        void OnDebugSpeed(InputAction.CallbackContext context);
     }
 }
