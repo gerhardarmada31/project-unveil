@@ -37,7 +37,7 @@ public class PlayerStatus : MonoBehaviour, ICollectable
     public void CollectCoin(int coin)
     {
         currentSpiritAmount += coin;
-        revealSphereSize += new Vector3(coin, 0, coin);
+        revealSphereSize += new Vector3(coin, 0, coin)/3;
         // var scaler = revealSphere.transform.localScale += new Vector3(0.5f, 0.5f, 0.5f);
         //revealSphere.transform.localScale = Vector3.Lerp(revealSphere.transform.localScale, revealSphere.transform.localScale + new Vector3(0.5f, 0.5f, 0.5f), 1f);
 

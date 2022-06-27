@@ -96,8 +96,8 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _VerticalTex:
-        m_Texture: {fileID: 2800000, guid: 4991813a1ae0a494c8d86b6eacc24ed7, type: 3}
-        m_Scale: {x: -0.05, y: 1}
+        m_Texture: {fileID: 2800000, guid: 5d9c26e475db6544abdfd886efef59b6, type: 3}
+        m_Scale: {x: -0.1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _BumpScale: 1
