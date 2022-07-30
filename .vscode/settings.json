@@ -1,4 +1,4 @@
-﻿{
+{
     "files.exclude":
     {
         "**/.DS_Store":true,
@@ -52,5 +52,7 @@
         "ProjectSettings/":true,
         "temp/":true,
         "Temp/":true
-    }
+    },
+    "editor.bracketPairColorization.enabled": false,
+    "editor.guides.bracketPairs": "active"
 }

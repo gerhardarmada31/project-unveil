@@ -16,4 +16,8 @@ public class ShootSpawner : MonoBehaviour
     {
         GameObject bulletTransform = Instantiate(projectile, spawnTransform.position, spawnTransform.rotation);
     }
+
+    private void OnDestroy()
+    {
+    }
 }
